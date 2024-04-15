@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Dashboard</title>
+  <link rel="stylesheet" href="index.js">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dashboard {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    .submenu {
+      margin-top: 20px;
+    }
+
+    .submenu ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .submenu ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #555;
+    }
+
+    .submenu ul li:last-child {
+      border-bottom: none;
+    }
+
+    .submenu ul li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+    }
+
+    .submenu ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dashboard">
+    <div class="sidebar">
+      <h2>Volunteer Dashboard</h2>
+      <div class="submenu">
+        <ul>
+          <li><a href="#">Notification</a></li>
+          <li><a href="#">Feedback</a></li>
+          <li><a href="#">Report</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <h1>Welcome to Volunteer Dashboard</h1>
+      <p>This is the main content area where you can see various information and perform actions.</p>
+    </div>
+  </div>
+
+</body>
+
+</html>
