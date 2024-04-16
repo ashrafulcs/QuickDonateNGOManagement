@@ -1,51 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CEO Dashboard</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO Dashboard</title>
+    <style>
         body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
+
 header, footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 10px 0;
 }
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}	
-	
-.logout-button {
+}
+
+.available-donations, .apply-for-donation {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.donation-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.donation {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.apply-button, .logout-button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding:  10px;
+    padding: 5px 10px;
     cursor: pointer;
 }
 
-.logout-button:hover {
+.apply-button:hover, .logout-button:hover {
     background-color: #0056b3;
 }
-	
+
 form {
     margin-top: 20px;
 }
 
-	
-	
-	
-    
+label, input, button {
+    display: block;
+    margin-bottom: 10px;
+}
 
+button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
 
-	
+button:hover {
+    background-color: #218838;
+}
 </style>
-</head>	
+</head>
+<body>
+    <header>
+        <h1>CEO Dashboard</h1>
+        <button class="logout-button">Logout</button>
+    </header>
+
+    <section class="available-donations">
+        <h2>Available Donations</h2>
+        <div class="donation-list">
+            <!-- Placeholder for displaying available donations -->
+            <div class="donation">
+                <h3>Donation Title</h3>
+                <p>Description: N/A</p>
+                <p>Eligibility: N/A</p>
+                <button class="apply-button">Apply</button>
+            </div>
+            <!-- Add more donation items dynamically -->
+        </div>
+    </section>
+
+    <section class="apply-for-donation">
+        <h2>Apply for Donation</h2>
+        <form action="#" method="post">
+            <label for="upload">Upload Required Documents:</label>
+            <input type="file" id="upload" name="upload" multiple required>
+            <button type="submit">Submit Application</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; QuickDonate NGO Management System </p>
+    </footer>
 </body>
 </html>
