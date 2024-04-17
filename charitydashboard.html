@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charity Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+    .dashboard {
+        background-color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        width: 80%;
+        max-width: 600px;
+        margin-top: 20px;
+    }
+    .donations {
+        margin-top: 20px;
+    }
+    .donation {
+        background-color: #555;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .logout {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+    <h2>Charity Dashboard</h2>
+    <h3>Donations Received</h3>
+    <div class="donations">
+        <?php
+        // Database credentials
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "quickdonate_db";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $database);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Query to fetch example donations
+        $sql = "SELECT Amount, Date, D_Name, D_Phone FROM PAYMENT_T JOIN DONATOR_T ON PAYMENT_T.DonatorID = DONATOR_T.DonatorID";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<div class='donation'>";
+                echo "<p><strong>Amount:</strong> $" . $row["Amount"]. "</p>";
+                echo "<p><strong>Date:</strong> " . $row["Date"]. "</p>";
+                echo "<p><strong>Donator Name:</strong> " . $row["D_Name"]. "</p>";
+                echo "<p><strong>Donator Phone:</strong> " . $row["D_Phone"]. "</p>";
+                echo "</div>";
+            }
+        } else {
+            echo "No donations received.";
+        }
+
+        // Close the database connection
+        $conn->close();
+        ?>
+    </div>
+</div>
+
+<div class="logout">
+    <form action="logout.php" method="post">
+        <input type="submit" value="Logout">
+    </form>
+</div>
+
+</body>
+</html>

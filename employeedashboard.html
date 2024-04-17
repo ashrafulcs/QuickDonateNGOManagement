@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+    .dashboard {
+        background-color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        width: 80%;
+        max-width: 600px;
+        margin-top: 20px;
+    }
+    .logout {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .actions {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .action-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .action-button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+    <h2>Employee Dashboard</h2>
+    <div class="actions">
+        <button class="action-button">Receive Paycheque</button>
+        <button class="action-button">Submit Financial Reports</button>
+        <button class="action-button">Create and Upload Projects</button>
+        <button class="action-button">Create Fundraising Events</button>
+        <button class="action-button">Create and Submit Budgets</button>
+    </div>
+</div>
+
+<div class="logout">
+    <form action="logout.php" method="post">
+        <input type="submit" value="Logout">
+    </form>
+</div>
+
+</body>
+</html>

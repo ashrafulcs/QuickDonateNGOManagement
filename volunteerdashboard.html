@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+    .dashboard {
+        background-color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        width: 80%;
+        max-width: 600px;
+        margin-top: 20px;
+    }
+    .logout {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .notifications {
+        background-color: #555;
+        padding: 10px;
+        margin-top: 20px;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+    .notification {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+    <h2>Volunteer Dashboard</h2>
+    <h3>Assigned Project</h3>
+    <?php
+    // Database credentials
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "quickdonate_db";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $database);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Query to fetch a random project assigned to the volunteer
+    $sql = "SELECT Project_Name, Project_Description FROM PROJECT_T ORDER BY RAND() LIMIT 1";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "<p><strong>Name:</strong> " . $row["Project_Name"]. "</p>";
+            echo "<p><strong>Description:</strong> " . $row["Project_Description"]. "</p>";
+        }
+    } else {
+        echo "No project assigned.";
+    }
+
+    // Close the database connection
+    $conn->close();
+    ?>
+</div>
+
+<div class="logout">
+    <form action="logout.php" method="post">
+        <input type="submit" value="Logout">
+    </form>
+</div>
+
+<div class="notifications">
+    <h3>Notifications</h3>
+    <div class="notification">Example notification 1</div>
+    <div class="notification">Example notification 2</div>
+    <div class="notification">Example notification 3</div>
+</div>
+
+</body>
+</html>
